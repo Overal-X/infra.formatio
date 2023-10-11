@@ -13,8 +13,8 @@ jobs:
       TAG_NAME: ${{ github.event.client_payload.tag_name }}
 
     steps:
-      - run: Deploying ${{ env.TAG_NAME }}
-      
+      - run: echo "Deploying ${{ env.TAG_NAME }}"
+
       - name: Checkout master
         uses: actions/checkout@main
       
