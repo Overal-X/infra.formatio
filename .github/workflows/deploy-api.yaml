@@ -28,8 +28,7 @@ jobs:
 
       - name: Update Deployment file
         run: |
-          sed 's|image: ghcr.io/overal-x/api.formatio:development|image: ghcr.io/overal-x/api.formatio:${{ env.TAG_NAME }}|g' \
-            $GITHUB_WORKSPACE/k8s/formatio.yaml > $GITHUB_WORKSPACE/k8s/modified-formatio.yaml
+          sed 's|image: ghcr.io/overal-x/api.formatio:development|image: ghcr.io/overal-x/api.formatio:${{ env.TAG_NAME }}|g' $GITHUB_WORKSPACE/k8s/formatio.yaml > $GITHUB_WORKSPACE/k8s/modified-formatio.yaml
           mv $GITHUB_WORKSPACE/k8s/modified-formatio.yaml $GITHUB_WORKSPACE/k8s/formatio.yaml
 
       - name: Deploy to DigitalOcean Kubernetes
