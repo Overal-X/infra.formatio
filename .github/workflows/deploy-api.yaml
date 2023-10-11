@@ -7,9 +7,10 @@ on:
 
 jobs:
   deploy:
-    if: ${{ !github.event.client_payload.passed }}
+    if: ${{ github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     
     steps:
-      - name: Rollout Docker Image
-        run: echo "rolling out"
+      - env:
+          MESSAGE: ${{ github.event.client_payload.message }}
+        run: echo $MESSAGE
