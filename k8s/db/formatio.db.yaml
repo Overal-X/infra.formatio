@@ -17,8 +17,8 @@ spec:
           image: postgres:15-alpine
           resources:
             limits:
-              memory: "125Mi"
-              cpu: "256m"
+              memory: "256Mi"
+              cpu: "500m"
           ports:
             - containerPort: 5432
           envFrom:

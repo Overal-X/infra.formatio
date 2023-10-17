@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: formatio-api-deployment
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: formatio-api
@@ -19,8 +20,8 @@ spec:
         imagePullPolicy: Always
         resources:
           limits:
-            memory: "60Mi"
-            cpu: "100m"
+            memory: "256Mi"
+            cpu: "500m"
         ports:
         - containerPort: 3000
 ---
