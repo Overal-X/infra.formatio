@@ -9,7 +9,7 @@ spec:
   tls:
   - hosts:
     - api-formatio.k8s.overal-x.org
-    secretName: letsencrypt-nginx
+    secretName: api-formatio.k8s.overal-x.org
   rules:
   - host: api-formatio.k8s.overal-x.org
     http:
