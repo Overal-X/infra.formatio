@@ -16,21 +16,15 @@ spec:
         - name: postgres
           image: postgres:15-alpine
           resources:
+            requests:
+              memory: "256Mi"
             limits:
               memory: "256Mi"
-              cpu: "500m"
           ports:
             - containerPort: 5432
           envFrom:
           - configMapRef:
               name: formatio-db-config
-      #     volumeMounts:
-      #       - name: formatio-db-storage
-      #         mountPath: /var/lib/postgresql/data
-      # volumes:
-      #   - name: formatio-db-storage
-      #     persistentVolumeClaim:
-      #       claimName: formatio-db-pvc
 ---
 apiVersion: v1
 kind: Service
