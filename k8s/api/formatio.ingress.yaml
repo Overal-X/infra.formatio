@@ -21,3 +21,10 @@ spec:
             name: formatio-api-service
             port:
               number: 3000
+      - path: /ws
+        pathType: Prefix
+        backend:
+          service:
+            name: formatio-api-service
+            port:
+              number: 9090
