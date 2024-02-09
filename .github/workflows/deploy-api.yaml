@@ -17,23 +17,17 @@ jobs:
 
       - name: Checkout master
         uses: actions/checkout@main
-      
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-
-      - name: Save DigitalOcean kubeconfig with short-lived credentials
-        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
 
       - name: Update Deployment file
         run: |
-          sed 's|image: ghcr.io/overal-x/api.formatio:development|image: ghcr.io/overal-x/api.formatio:${{ env.TAG_NAME }}|g' \
-          k8s/api/formatio.yaml > k8s/api/modified-formatio.yaml
-          mv k8s/api/modified-formatio.yaml k8s/api/formatio.yaml
-
-      - name: Deploy to DigitalOcean Kubernetes
-        run: kubectl apply -f k8s/api/formatio.yaml
-
-      - name: Verify deployment
-        run: kubectl rollout status deployment/formatio-api-deployment
+          sed -E 's|image: ghcr\.io/overal-x/api\.formatio:[a-zA-Z0-9.-]+|image: ghcr.io/overal-x/api.formatio:${{ env.TAG_NAME }}|g' \
+          k8s/formatio/formatio.yaml > k8s/formatio/formatio-mod.yaml
+          mv k8s/formatio/formatio-mod.yaml k8s/formatio/formatio.yaml
+ 
+      - name: Commit changes
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: k8s/api/formatio.yaml
+          commit-msg: deploy formatio api ${{ env.TAG_NAME }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+  
