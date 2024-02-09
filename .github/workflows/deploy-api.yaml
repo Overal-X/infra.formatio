@@ -28,6 +28,6 @@ jobs:
         uses: test-room-7/action-update-file@v1
         with:
           file-path: k8s/api/formatio.yaml
-          commit-msg: deploy formatio api ${{ env.TAG_NAME }}
+          commit-msg: deploys formatio api ${{ env.TAG_NAME }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-  
+          allow-removing: true
