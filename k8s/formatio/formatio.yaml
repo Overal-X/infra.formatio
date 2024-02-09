@@ -17,7 +17,7 @@ spec:
         - name: ghcr
       containers:
         - name: formatio-api
-          image: ghcr.io/overal-x/api.formatio:v0.1.22
+          image: ghcr.io/overal-x/api.formatio:v0.1.23
           imagePullPolicy: Always
           resources:
             limits:
