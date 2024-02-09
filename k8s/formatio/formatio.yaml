@@ -13,19 +13,19 @@ spec:
         app: formatio-api
     spec:
       imagePullSecrets:
-      - name: ghcr
+        - name: ghcr
       containers:
-      - name: formatio-api
-        image: ghcr.io/overal-x/api.formatio:development
-        imagePullPolicy: Always
-        resources:
-          limits:
-            memory: "256Mi"
-          requests:
-            memory: "256Mi"
-        ports:
-        - containerPort: 3000
-        - containerPort: 9090
+        - name: formatio-api
+          image: ghcr.io/overal-x/api.formatio:v0.1.21
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "512Mi"
+            requests:
+              memory: "512Mi"
+          ports:
+            - containerPort: 3000
+            - containerPort: 9090
 ---
 apiVersion: v1
 kind: Service
