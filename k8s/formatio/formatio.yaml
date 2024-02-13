@@ -13,12 +13,12 @@ spec:
       labels:
         app: formatio-api
     spec:
-      imagePullPolicy: Always
       imagePullSecrets:
         - name: ghcr
       containers:
         - name: formatio-api
           image: ghcr.io/overal-x/api.formatio:v0.1.25
+          imagePullPolicy: Always
           resources:
             limits:
               memory: "512Mi"
