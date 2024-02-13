@@ -13,6 +13,7 @@ spec:
       labels:
         app: formatio-api
     spec:
+      imagePullPolicy: Always
       imagePullSecrets:
         - name: ghcr
       containers:
